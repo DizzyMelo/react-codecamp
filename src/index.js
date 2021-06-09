@@ -1,17 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useState } from "react";
+import ReactDom from "react-dom";
+import "./index.css";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const Greeting = (props) => {
+  const [counter, setCounter] = useState(0);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  const [name, setName] = useState("[Enter your name]");
+
+  const clickButton = () => {
+    setCounter(counter + 1);
+  };
+
+  const editname = (e) => {
+    setName(e.target.value);
+  };
+
+  return (
+    <React.Fragment>
+      <div className="center">
+        <h4>
+          This is <strong>{name}</strong> and this is my 3534456456 first
+          component
+        </h4>
+        <input type="text" onKeyUp={(e) => editname(e)} />
+        <h4>{counter}</h4>
+        <button onClick={clickButton}>Click the Button</button>
+      </div>
+    </React.Fragment>
+  );
+};
+
+ReactDom.render(<Greeting />, document.getElementById("root"));
